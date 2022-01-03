@@ -65,7 +65,7 @@ sub renderXMLContent {
   my $lastName = $_[2];
 
   my $myXML = <<"XML";
-<?xml version='1.0' encoding='uft-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <user>
   <owner>$owner</owner>
   <firstName>$firstName</firstName>

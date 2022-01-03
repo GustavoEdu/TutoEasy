@@ -1,6 +1,4 @@
 function showLogin(){
-  
-  console.log("Estamos en showLogin");
   let section = document.getElementById("main");
   let form = `
     <h2>Identificarse:</h2>
@@ -12,18 +10,18 @@ function showLogin(){
     <button onclick="showMenuUserLogged()">Vista previa de logeado</button>
   `;
   section.innerHTML = form;
-  
 }
 
 function doLogin(){
   let user = document.getElementById('user').value;
   let password = document.getElementById('password').value;
 
-  let loginPerl = 'cgi-bin/login.pl/?user='+user+'&password='+password;
+  let loginPerl = './cgi-bin/login.pl?id='+user+'&password='+password;
   let promise = fetch(loginPerl);
   promise.then(response=>response.text())
   .then(data =>{
     let xml = (new window.DOMParser()).parseFromString(data, "text/xml");
+    console.log(xml);
     loginResponse(xml);
   }).catch (error => {
     showLogin();
@@ -40,8 +38,10 @@ function loginResponse(xml){
   let element = document.getElementById("main");
     
   if (user == undefined || user == ''){
+    console.log("Entrada no válida");
     showLogin();
   } else {
+    console.log("Logeado o Registrado Correctamente");
     userFullName = fullName;
     userKey = user;
     showLoggedIn();
@@ -79,11 +79,12 @@ function doCreateAccount(){
   if (user == '' || password == '' || name == '' || lastName == ''){
     showCreateAccount();
   } else {
-    let registerPerl = "cgi-bin/register.pl/?user="+user+"&password="+password+"&firstName="+name+"lastName="+lastName;
+    let registerPerl = "cgi-bin/register.pl?id="+user+"&password="+password+"&firstName="+name+"&lastName="+lastName;
     let promise = fetch(registerPerl);
     promise.then(response => response.text())
       .then (data => {
         let xml = (new window.DOMParser()).parseFromString(data,"text/xml");
+        console.log("El objeto XML ha sido creado");
         loginResponse(xml);
       }).catch(error => {
         showCreateAccount(); 
