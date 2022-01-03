@@ -16,6 +16,7 @@ p#rightElement {
   padding: 20px 22px;
   text-decoration: none;
   font-size: 18px;
+  border-radius: 5px;
 }
 p#leftElement {
   color: #fff945;
@@ -38,4 +39,30 @@ img#logo {
   margin:0;
   width: 85px;
   height: 85px;
+  border-radius: 20px 0 20px 0;
+}
+div#mainInterface {
+  display: flex;
+  color: black;
+  background-color: yellow;
+}
+div#mainInterface nav {
+  background-color: white;
+}
+div#mainInterface td {
+  padding: 20px;
+  display: block;
+  margin: 0;
+  border-radius: 15px;
+}
+div#mainInterface td:hover {
+  background-color: #c9c9c9;
+  cursor: pointer;
+}
+div#mainInterface a {
+  color: black;
+  text-decoration: none;
+}
+article {
+  flex:0%;
 }
