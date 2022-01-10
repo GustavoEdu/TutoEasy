@@ -1,13 +1,25 @@
 function showLogin(){
   let section = document.getElementById("main");
   let form = `
-    <h2>Identificarse:</h2>
-    <label for="user">Usuario:</label>
-    <input type="text" id="user"><br><br>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password"><br><br>
-    <button onclick="doLogin()">Ingresar</button>
-    <button onclick="showMenuUserLogged()">Vista previa de logeado</button>
+    <div class="grid-container">
+      <div class="grid-item"> </div>
+      <div class="grid-item"> </div>
+      <div class="grid-item"> </div>
+      <div class="grid-item"> </div>
+      <div class="centrar">
+        <h2>Identificarse:</h2>
+        <label for="user">Usuario:</label><br>
+        <input type="text" id="user"><br><br>
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password"><br><br>
+        <button onclick="doLogin()">Ingresar</button>
+        <button onclick="showMenuUserLogged()">Vista previa de logeado</button>
+      </div>
+      <div class="grid-item"> </div>
+      <div class="grid-item"> </div>
+      <div class="grid-item"> </div>
+      <div class="grid-item"> </div>
+    </div>
   `;
   section.innerHTML = form;
 }

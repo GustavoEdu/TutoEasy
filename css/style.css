@@ -1,14 +1,16 @@
+@import url("navigation.css");
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .topnav {
   overflow: hidden;
-  background-color: #1d223b ;
+  background-color: #1d223b;
 }
 p#rightElement {
+  margin-top:15px;
   float: right;
   display: block;
   color: #f2f2f2;
@@ -19,11 +21,12 @@ p#rightElement {
   border-radius: 5px;
 }
 p#leftElement {
-  color: #fff945;
+  margin-top:15px;
+  color: #ffe247;
   float: left;
   display: block;
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 16px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -31,38 +34,115 @@ p#rightElement:hover {
   background-color: #ddd;
   color: black;
   cursor: pointer;
+  transition: 0.3s;
 }
 img#logo {
+  margin-top:15px;
+  margin-left:20px;
   float: left;
-  padding-top: 11px;
-  padding-left: 11px;
-  margin:0;
-  width: 85px;
-  height: 85px;
+  width: 70px;
+  height: 70px;
   border-radius: 20px 0 20px 0;
 }
-div#mainInterface {
+div#leftList {
   display: flex;
   color: black;
-  background-color: yellow;
+  background-color: gray;
 }
-div#mainInterface nav {
-  background-color: white;
+
+/*
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
-div#mainInterface td {
+.grid-item {
   padding: 20px;
-  display: block;
-  margin: 0;
-  border-radius: 15px;
+  font-size: 30px;
+  text-align: center;
 }
-div#mainInterface td:hover {
-  background-color: #c9c9c9;
-  cursor: pointer;
+*/
+.centrar {
+  max-width: 50%;
+  max-height: 50%;
+  margin: auto;
+  /*border-style: ridge;
+  //text-align:center;
+  */
 }
-div#mainInterface a {
-  color: black;
-  text-decoration: none;
+
+/*
+  DE AQUI PARA ABAJO SON PRUEBAS
+*/
+
+.container {
+    height:590px;
 }
-article {
-  flex:0%;
+
+.card {
+    width: 380px;
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    background-color: #fff;
+    position: relative;
+    height: 400px;
+}
+
+.upper {
+    height: 100px;
+}
+
+.upper img {
+    width: 100%;
+    height: 100px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.user {
+    position: relative;
+}
+
+.profile img {
+    height: 85px;
+    width: 80px;
+    margin-top: 2px;
+}
+
+.profile {
+    position: absolute;
+    top: -50px;
+    left: 40%;
+    height: 90px;
+    width: 90px;
+    border: 3px solid #fff;
+    border-radius: 100%;
+}
+
+.follow {
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 35px;
+}
+
+.stats span {
+    font-size: 29px;
+}
+
+button#backButton {
+  background-color: blue;
+  margin-top: 15px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+#inboxSpan span {
+  background-color: blueviolet;
+}
+
+img#articleImages {
+  max-width: 50%;
+  max-height: 50%;
 }

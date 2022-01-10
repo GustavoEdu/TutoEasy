@@ -15,7 +15,6 @@ my $lastName = $q->param("lastName");
 
 #Filtering the input
 $id = filterInput($id);
-$password = filterInput($password);
 $firstName = filterInput($firstName);
 $lastName = filterInput($lastName);
 
