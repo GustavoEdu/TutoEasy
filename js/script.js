@@ -1,24 +1,28 @@
 function showLogin(){
   let section = document.getElementById("main");
   let form = `
-    <div class="grid-container">
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="centrar">
-        <h2>Identificarse:</h2>
-        <label for="user">Usuario:</label><br>
-        <input type="text" id="user"><br><br>
-        <label for="password">Contraseña:</label><br>
-        <input type="password" id="password"><br><br>
-        <button onclick="doLogin()">Ingresar</button>
-        <button onclick="showMenuUserLogged()">Vista previa de logeado</button>
+    <div class="d-flex align-items-center justify-content-center w-100 h-100 p-3">
+      <div>
+        <div class="mb-3 d-flex align-items-center justify-content-evenly">
+          <img src="img/T.png" alt="TuToEasyLogo" width="100" height="100" style="z-index:-1">
+          <h1>Bienvenido</h1>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="user" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">Nuestra página web nunca mostrará tus datos, bueno casi nunca.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Recordar usuario</label>
+        </div>
+        <button type="submit" class="btn btn-warning" onclick="doLogin()">Vamos!</button>
+        <button type="" class="btn btn-danger" onclick="showMenuUserLogged()">Ver como registrado</button>
       </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
-      <div class="grid-item"> </div>
     </div>
   `;
   section.innerHTML = form;
@@ -68,16 +72,36 @@ function showCreateAccount(){
   console.log("Estamos en showCreateAccount");
   let section = document.getElementById("main");
   let form = `
-    <h2>Registrarse:</h2>
-    <label for="user">Usuario:</label>
-    <input type="text" id="user"><br><br>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password"><br><br>
-    <label for="name">Nombre:</label>
-    <input type="text" id="name"><br><br>
-    <label for="lastName">Apellido:</label>
-    <input type="text" id="lastName"><br><br>
-    <button onclick="doCreateAccount()">Registrar</button>
+<div class="d-flex align-items-center justify-content-evenly w-100 p-3">
+  <div>
+    <div class="mb-3 d-flex align-items-center justify-content-evenly">
+      <img src="img/T.png" alt="TuToEasyLogo" width="100" height="100" style="z-index:-1">
+      <h1>Bienvenido usuario</h1>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+      <input type="email" class="form-control" id="user" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Nombre</label>
+      <input type="password" class="form-control" id="userName">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Apellido</label>
+      <input type="password" class="form-control" id="lastName">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Recordar usuario</label>
+    </div>
+    <button type="submit" class="btn btn-warning" onclick="doLogin()">Vamos!</button>
+    <button type="" class="btn btn-danger" onclick="showMenuUserLogged()">Ver como registrado</button>
+  </div>
+</div>
   `;
   section.innerHTML = form;
 }
