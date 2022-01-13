@@ -6,13 +6,13 @@ html {
   height:100%;
 }
 body {
-  height: 75%;
+  height: 100%;
 }
 .topnav {
   overflow: hidden;
   background-color: #1d223b;
 }
-p#rightElement {
+p.rightElement {
   margin-top:15px;
   float: right;
   display: block;
@@ -23,7 +23,7 @@ p#rightElement {
   font-size: 18px;
   border-radius: 5px;
 }
-p#leftElement {
+p.leftElement {
   margin-top:15px;
   color: #ffe247;
   float: left;
@@ -33,13 +33,13 @@ p#leftElement {
   font-size: 20px;
   font-weight: bold;
 }
-p#rightElement:hover {
+p.rightElement:hover {
   background-color: #ddd;
   color: black;
   cursor: pointer;
   transition: 0.3s;
 }
-img#logo {
+img.logo {
   margin-top:15px;
   margin-left:20px;
   float: left;

@@ -1,15 +1,20 @@
 var userFullName = 'Gustavo Ordoño';
 var userKey = '';
 
-function showWelcome(){
+const showWelcome = () => {
   let section = document.getElementById("main");
   let html = `
-  <h1>¡Bienvenido a TuToEasy!</h1>
-  <code>Esta página fue creada por Gustavo y César</code><br>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h1>¡Bienvenido a TuToEasy!</h1>
+    <code>Esta página fue creada por Gustavo y César</code><br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2683.071781498595!2d-70.2474076772918!3d-18.004935097468667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915acf795e00ecb7%3A0x655457da86809cbb!2sPolleria%20Tradicion!5e0!3m2!1ses!2spe!4v1641954614582!5m2!1ses!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   `;
   section.innerHTML = html;
-}
+};
+
+window.addEventListener("load", showWelcome);
+const btnInit = document.getElementById("btnInit");
+btnInit.addEventListener("click", showWelcome);
 
 function showMenuUserLogged(){
   // AQUI SE TRABAJA LA SECCION DE ARTÍCULOS Y USUARIOS
@@ -18,8 +23,8 @@ function showMenuUserLogged(){
   let articles = "";
   let header = `
     <div>
-      <div id="name"><p id="rightElement" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="displayProfile()" class="rightAlign btn">`+userFullName+`</p></div>
-      <p id="rightElement" class="btn">
+      <div id="name"><p class="rightElement" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="displayProfile()" class="rightAlign btn">`+userFullName+`</p></div>
+      <p class="rightElement" class="btn">
         Inbox
         <span class="mt-4 position-absolute translate-middle badge rounded-pill bg-danger">
         99+
@@ -27,8 +32,8 @@ function showMenuUserLogged(){
         </span>
       </p>
       <div>
-      <img id='logo' src='img/T.png'>
-      <p id="leftElement">TuToEasy</p>
+      <img class='logo' src='img/T.png'>
+      <p class="leftElement">TuToEasy</p>
     <div>
    `;
   for(var i=0;i<50;i++){
@@ -50,7 +55,7 @@ function showMenuUserLogged(){
     `;
   }
   let main = `
-  <div class="container mw-100 p-0">
+  <div class="container mw-100 p-0 h-100">
     <div class="d-flex h-100">
       <div class="h-100" id="leftNavigationItems" style="width: 50px">
 
@@ -153,7 +158,7 @@ function displayProfile(){
   section.innerHTML = html;
 
   let name = document.getElementById("name");
-  name.innerHTML = `<p id="rightElement" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" class="rightAlign btn">`+userFullName+`</p>`;
+  name.innerHTML = `<p data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" class="rightElement rightAlign btn">`+userFullName+`</p>`;
 }
 
 function displayFriends(){

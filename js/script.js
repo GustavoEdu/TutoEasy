@@ -1,4 +1,5 @@
-function showLogin(){
+const btnLogin = document.getElementById("btnLogin");
+btnLogin.addEventListener("click", () => {
   let section = document.getElementById("main");
   let form = `
     <div class="d-flex align-items-center justify-content-center w-100 h-100 p-3">
@@ -26,26 +27,25 @@ function showLogin(){
     </div>
   `;
   section.innerHTML = form;
-}
+});
 
-function doLogin(){
+function doLogin() {
   let user = document.getElementById('user').value;
   let password = document.getElementById('password').value;
 
-  let loginPerl = './cgi-bin/login.pl?id='+user+'&password='+password;
-  let promise = fetch(loginPerl);
-  promise.then(response=>response.text())
-  .then(data =>{
+  let loginPerl = `./cgi-bin/login.pl?id=${user}&password=${password}`;
+  fetch(loginPerl)
+  .then(response => response.text())
+  .then(data => {
     let xml = (new window.DOMParser()).parseFromString(data, "text/xml");
     console.log(xml);
     loginResponse(xml);
-  }).catch (error => {
+  }).catch(error => {
     showLogin();
   });
 }
 
 function loginResponse(xml){
-  
   let user = (xml.getElementsByTagName('owner'))[0].childNodes[0].nodeValue;
   let firstName = (xml.getElementsByTagName('firstName'))[0].childNodes[0].nodeValue;
   let lastName = (xml.getElementsByTagName('lastName'))[0].childNodes[0].nodeValue;
@@ -68,7 +68,8 @@ function showLoggedIn(){
   showMenuUserLogged();
 }
 
-function showCreateAccount(){
+const btnRegister = document.getElementById("btnRegister");
+btnRegister.addEventListener("click", () => {
   console.log("Estamos en showCreateAccount");
   let section = document.getElementById("main");
   let form = `
@@ -104,7 +105,7 @@ function showCreateAccount(){
 </div>
   `;
   section.innerHTML = form;
-}
+});
 
 function doCreateAccount(){
   let user = document.getElementById("user").value;
