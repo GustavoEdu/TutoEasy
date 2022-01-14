@@ -18,27 +18,53 @@
     </div>
     <div id='main' class='w-100 h-100'>
     </div>
-
+    <button id="dogButton" onclick="showDog()">Dogs!</button>
+    <button id="dogButton" onclick="setInterval('showDog()',3000)">More Dogs!</button>
     <div id="targetDiv">Aquí se despliega la Información</div>
+    <button onclick="showPosition()">Doxxear</button>
+    <div id="mapholder"></div>
     <script>
-      const targetDiv = document.getElementById("targetDiv");
-      let htmlContent;
-      let url = "https://api.jikan.moe/v3";
-      setTimeout(() => {
-       fetch(url)
-       .then(response => response.json())
-       .then(data => {
-         console.log(data);
-         for(property in data) {
-           htmlContent += `
-             <b>${property}: </b><span>${data[property]}</span><br>
-           `;
-         }
-         targetDiv.innerHTML = htmlContent;
-       });
-      }, 6000);
+      const showDog = (number) =>{
+        const targetDiv = document.getElementById("targetDiv");
+        let htmlContent = "";
+        let url = "https://dog.ceo/api/breeds/image/random";
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          for(property in data) {
+            if (property){
+              htmlContent += `<img src="`+data[property]+`" width="500" height="450">
+              `;
+              break;
+            }
+          }
+          targetDiv.innerHTML = htmlContent;
+        });
+      }
     </script>
+    <script>
+        const map = document.getElementById("mapholder");
+        function getLocation() {
+        if (navigator.geolocation) {
+          showPosition(navigator.geolocation.getCurrentPosition());
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+      
+      function showPosition(position) {
+        console.log(navigator.geolocation.getCurrentPosition(showPosition));
+        let latlon = position.coords.latitude + "," + position.coords.longitude;
 
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+        /*
+        let img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
+        */
+        map.innerHTML = `<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d18045.970672613275!2d`+longitude+`!3d`+latitude+`!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2spe!4v1642120601861!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="./js/main.js"></script>
     <script src="./js/script.js"></script>

@@ -89,17 +89,21 @@ btnRegister.addEventListener("click", () => {
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Nombre</label>
-      <input type="password" class="form-control" id="userName">
+      <input type="userName" class="form-control" id="firstName">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Apellido</label>
-      <input type="password" class="form-control" id="lastName">
+      <input type="lastName" class="form-control" id="lastName">
+    </div>
+    <div class="mb-3">
+      <label for="avatarLink" class="form-label">Imagen</label>
+      <input type="avatar" class="form-control" id="avatar">
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Recordar usuario</label>
     </div>
-    <button type="submit" class="btn btn-warning" onclick="doLogin()">Vamos!</button>
+    <button type="submit" class="btn btn-warning" onclick="doCreateAccount()">Vamos!</button>
     <button type="" class="btn btn-danger" onclick="showMenuUserLogged()">Ver como registrado</button>
   </div>
 </div>
@@ -108,11 +112,19 @@ btnRegister.addEventListener("click", () => {
 });
 
 function doCreateAccount(){
-  let user = document.getElementById("user").value;
-  let password = document.getElementById("password").value;
-  let name = document.getElementById("name").value;
+  console.log("DO CREATE ACCOUNT XDXD");
+  //let user = document.getElementById("user").value;
+  //let password = document.getElementById("password").value;
+  let name = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
-    
+  let avatar = document.getElementById("avatar").value;
+
+  let fullName = name+" "+lastName;
+  userFullName = fullName;
+  perfilImg = avatar;
+
+  showMenuUserLogged();
+  /*
   if (user == '' || password == '' || name == '' || lastName == ''){
     showCreateAccount();
   } else {
@@ -127,4 +139,5 @@ function doCreateAccount(){
         showCreateAccount(); 
       });
   }
+  */
 }
