@@ -1,6 +1,18 @@
-var userFullName = "";
-var userKey = "";
-var perfilImg = "";
+export let userFullName = "";
+export let userKey = "";
+export let perfilImg = "";
+
+export const setUserFullName = fullName => {
+  userFullName = fullName;
+}
+
+export const setUserKey = key => {
+  userKey = key;
+};
+
+export const setPerfilImg = imgURL => {
+  perfilImg = imgURL;
+}
 
 const btnInit = document.getElementById("btnInit");
 
@@ -26,7 +38,7 @@ window.addEventListener("load", showWelcome);
 btnInit.addEventListener("click", showWelcome);
 
 // Aquí se trabaja la sección de Publicaciones y Usuarios
-function showMenuUserLogged() {
+export const showMenuUserLogged = () => {
   let headerSection = document.getElementById("menu");
   let mainSection = document.getElementById("main");
   let articles = "";
