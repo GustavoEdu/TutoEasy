@@ -5,13 +5,15 @@ import {
   setUserFullName,
   setUserKey,
   setPerfilImg,
-  showMenuUserLogged
+  showMenuUserLogged,
+  displayProfile
 } from "./main.js";
 import {
   saveUser,
   getUsers,
 } from "./firebase.js";
 
+const wasFounded = false;
 const doLogin = async () => {
   let userQuery = document.getElementById('user').value;
   let passwordQuery = document.getElementById('password').value;
@@ -35,13 +37,19 @@ const doLogin = async () => {
           setUserKey(email);
           setPerfilImg(imgURL);
           showMenuUserLogged();
+          displayProfile();
+          wasFounded = true;
         }
       });
+      if(!wasFounded) {
+        wasFounded = false;
+        throw error;
+      }
     } catch(error) {
       invalidBox.textContent = "Usuario o Contraseña Incorrecto(s)";
     }  
   } else {
-    console.log("¡Entrada Inválida!");
+    invalidBox.textContent = "¡Entrada inválida!";
   }
   console.log(userFullName);
   console.log(userKey);
@@ -73,6 +81,7 @@ btnLogin.addEventListener("click", () => {
         </div>
         <button type="submit" class="btn btn-warning" id="btnToLogin">Vamos!</button>
         <button type="button" class="btn btn-danger" onclick="showMenuUserLogged()">Ver como registrado</button>
+        <p id="invalidBox"></p>
       </div>
     </div>
   `;
@@ -80,26 +89,6 @@ btnLogin.addEventListener("click", () => {
   const btnToLogin = document.getElementById("btnToLogin");
   btnToLogin.addEventListener("click", doLogin);
 });
-
-
-
-function loginResponse(xml){
-  let user = (xml.getElementsByTagName('owner'))[0].childNodes[0].nodeValue;
-  let firstName = (xml.getElementsByTagName('firstName'))[0].childNodes[0].nodeValue;
-  let lastName = (xml.getElementsByTagName('lastName'))[0].childNodes[0].nodeValue;
-
-  let element = document.getElementById("main");
-    
-  if (user == undefined || user == ''){
-    console.log("Entrada no válida");
-    showLogin();
-  } else {
-    console.log("Logeado o Registrado Correctamente");
-    userFullName = fullName;
-    userKey = user;
-    showLoggedIn();
-  }
-}
 
 function showLoggedIn(){
   showMenuUserLogged();
@@ -131,6 +120,7 @@ const doCreateAccount = async () => {
       setUserKey(user);
       setPerfilImg(avatar);
       showMenuUserLogged();
+      displayProfile();
     } catch(error) {
       invalidBox.textContent = "¡Ese correo ya ha sido registrado!";
     }

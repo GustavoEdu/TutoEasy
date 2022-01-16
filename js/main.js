@@ -116,7 +116,7 @@ export const showMenuUserLogged = () => {
   mainSection.innerHTML = main;
 }
 
-function displayProfile() {
+export const displayProfile = () => {
   let section = document.getElementById("profile");
   section.innerHTML = "";
   let html = `
@@ -126,9 +126,9 @@ function displayProfile() {
           <div class="card mw-100 p-2" style="border-radius: 15px;">
             <div class="card-body text-center w-100">
               <div class="mt-3 mb-4">
-                <img src="`+perfilImg+`" class="rounded-circle img-fluid" style="width: 100px;height: 100px;"/>
+                <img src="${perfilImg}" class="rounded-circle img-fluid" style="width: 100px;height: 100px;"/>
               </div>
-              <h4 class="mb-2">`+userFullName+`</h4>
+              <h4 class="mb-2">${userFullName}</h4>
               <p class="text-muted mb-4">@Programmer</p>
               <div class="mb-4 pb-2">
                 <button type="button" class="btn btn-outline-primary btn-floating">
