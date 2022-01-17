@@ -37,6 +37,11 @@ const showWelcome = () => {
 window.addEventListener("load", showWelcome);
 btnInit.addEventListener("click", showWelcome);
 
+const showGlobalChat = () => {
+  const section = document.getElementById("globalChatSection");
+  section.innerHTML = "Hello World!";
+};
+
 // Aquí se trabaja la sección de Publicaciones y Usuarios
 export const showMenuUserLogged = () => {
   let headerSection = document.getElementById("menu");
@@ -47,6 +52,9 @@ export const showMenuUserLogged = () => {
       <div id="name">
         <p class="rightElement" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" onclick="displayProfile()" class="rightAlign btn">${userFullName}</p>
       </div>
+      <p id="btnGlobalChat" class="rightElement btn">
+        TutoEasyCommunity
+      </p>
       <p class="rightElement" class="btn">
         Inbox
         <span class="mt-4 position-absolute translate-middle badge rounded-pill bg-danger">
@@ -105,7 +113,7 @@ export const showMenuUserLogged = () => {
               </div>
             </div>
           </div>
-        <div class="overflow-auto p-5 w-100" style="height: auto;">
+        <div id="globalChatSection" class="overflow-auto p-5 w-100" style="height: auto;">
           <div id="articles">${articles}</div>
         </div>
       </div>
@@ -114,6 +122,9 @@ export const showMenuUserLogged = () => {
 
   headerSection.innerHTML = header;
   mainSection.innerHTML = main;
+  
+  const btnGlobalChat = document.getElementById("btnGlobalChat");
+  btnGlobalChat.addEventListener("click", showGlobalChat);
 }
 
 export const displayProfile = () => {
