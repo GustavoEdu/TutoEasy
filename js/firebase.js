@@ -9,7 +9,10 @@ import {
     onSnapshot,
     doc,
     getDoc,
-    updateDoc
+    updateDoc,
+    query,
+    where,
+    orderBy,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -33,3 +36,18 @@ export const saveUser = (user, password, firstName, lastName, avatar) =>
     addDoc(collection(db, "users"), {user: user, password: password, firstName: firstName, lastName: lastName, avatar: avatar});
 
 export const getUsers = () => getDocs(collection(db, "users"));
+
+export const getAmountMessages = async () => {
+    const docs = await getDocs(collection(db, "globalMessages"));
+    return docs.size;
+};
+
+export const onGetGlobalMessage = callback =>
+    onSnapshot(collection(db, "globalMessages"), callback);
+
+export const saveGlobalMessage = (id, userFullName, date, content) =>
+    addDoc(collection(db, "globalMessages"), {id: id, userFullName: userFullName, date:date, content: content});
+
+export const getSortedMessages = () => {
+    return query(collection(db, "globalMessages"), where("id", ">", 0), orderBy("id"));
+}

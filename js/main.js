@@ -1,6 +1,14 @@
+import { 
+  getDocs 
+} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js"
+import { onGetGlobalMessage, saveGlobalMessage, getAmountMessages, getSortedMessages } from "./firebase.js";
+
+//export let user = {};
 export let userFullName = "";
 export let userKey = "";
 export let perfilImg = "";
+let idGlobalMessage;
+let globalMessages = [];
 
 export const setUserFullName = fullName => {
   userFullName = fullName;
@@ -39,7 +47,43 @@ btnInit.addEventListener("click", showWelcome);
 
 const showGlobalChat = () => {
   const section = document.getElementById("globalChatSection");
-  section.innerHTML = "Hello World!";
+  section.innerHTML = `
+  <div id="flujoMensajero"></div>
+  <input type="text" id="globalMessage">
+  <button id="btnSendGlobalMessage">Enviar</button>
+  `;
+
+  const btnSendGlobalMessage = document.getElementById("btnSendGlobalMessage");
+  btnSendGlobalMessage.addEventListener("click", async () => {
+    let content = document.getElementById("globalMessage").value;
+    if(content) {
+      const result = await getAmountMessages();
+      const id = result + 1;
+      const date = new Date().toLocaleString();
+      saveGlobalMessage(id, userFullName, date, content);
+    }
+    document.getElementById("globalMessage").value = "";
+  });
+
+  onGetGlobalMessage(async querySnapshot => {
+    let htmlContent = "";
+    querySnapshot.forEach(doc => {
+      globalMessages.push(doc.data());
+    });
+    const sortedMessages = await getDocs(getSortedMessages());
+    sortedMessages.forEach(doc => {
+      const globalMessage = doc.data();
+      htmlContent += `
+        <div>
+          <b>${globalMessage.userFullName}</b>&nbsp;<span>${globalMessage.date}</span><br>
+          <p>${globalMessage.content}</p>
+        </div>
+      `;
+    });
+    const flujoMensajero = document.getElementById("flujoMensajero");
+    flujoMensajero.innerHTML = htmlContent;
+    globalMessages = [];
+  });
 };
 
 // Aquí se trabaja la sección de Publicaciones y Usuarios
