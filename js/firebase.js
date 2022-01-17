@@ -45,8 +45,8 @@ export const getAmountMessages = async () => {
 export const onGetGlobalMessage = callback =>
     onSnapshot(collection(db, "globalMessages"), callback);
 
-export const saveGlobalMessage = (id, userFullName, date, content) =>
-    addDoc(collection(db, "globalMessages"), {id: id, userFullName: userFullName, date:date, content: content});
+export const saveGlobalMessage = (id, userFullName, avatar, date, content) =>
+    addDoc(collection(db, "globalMessages"), {id: id, userFullName: userFullName, avatar:avatar, date:date, content: content});
 
 export const getSortedMessages = () => {
     return query(collection(db, "globalMessages"), where("id", ">", 0), orderBy("id"));

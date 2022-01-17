@@ -48,9 +48,13 @@ btnInit.addEventListener("click", showWelcome);
 const showGlobalChat = () => {
   const section = document.getElementById("globalChatSection");
   section.innerHTML = `
-  <div id="flujoMensajero"></div>
+  <div class="h-75">
+    <div id="flujoMensajero"></div>
+  </div>
   <input type="text" id="globalMessage">
-  <button id="btnSendGlobalMessage">Enviar</button>
+  <div class="h-25">
+    <button id="btnSendGlobalMessage">Enviar</button>
+  </div>
   `;
 
   const btnSendGlobalMessage = document.getElementById("btnSendGlobalMessage");
@@ -60,26 +64,35 @@ const showGlobalChat = () => {
       const result = await getAmountMessages();
       const id = result + 1;
       const date = new Date().toLocaleString();
-      saveGlobalMessage(id, userFullName, date, content);
+      const avatar = perfilImg;
+      saveGlobalMessage(id, userFullName, avatar, date, content);
     }
     document.getElementById("globalMessage").value = "";
   });
 
   onGetGlobalMessage(async querySnapshot => {
-    let htmlContent = "";
     querySnapshot.forEach(doc => {
       globalMessages.push(doc.data());
     });
     const sortedMessages = await getDocs(getSortedMessages());
+    let htmlContent = `<div class="container">`;
     sortedMessages.forEach(doc => {
       const globalMessage = doc.data();
       htmlContent += `
-        <div>
-          <b>${globalMessage.userFullName}</b>&nbsp;<span>${globalMessage.date}</span><br>
-          <p>${globalMessage.content}</p>
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="mt-3 mb-4">
+              <img src="${globalMessage.avatar}" class="rounded-circle img-fluid" style="width: 100px;height: 100px;"/>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <b>${globalMessage.userFullName}</b>&nbsp;<span>${globalMessage.date}</span><br>
+            <p>${globalMessage.content}</p>
+          </div>
         </div>
       `;
     });
+    htmlContent += `</div>`;
     const flujoMensajero = document.getElementById("flujoMensajero");
     flujoMensajero.innerHTML = htmlContent;
     globalMessages = [];
@@ -215,7 +228,7 @@ export const displayProfile = () => {
               </div>
               <div>
                 <p class="mt-3">
-                Hello my dear friends, I'm Gustavo! I would like to make lots of friends. Like u!
+                  Hello my dear friends, I'm Gustavo! I would like to make lots of friends. Like u!
                 </p>
               </div>
             </div>
